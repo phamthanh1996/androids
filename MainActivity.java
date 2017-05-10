@@ -1,4 +1,4 @@
-package com.example.congtrunhanchia;
+package com.example.bai11_radiobutton;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -7,52 +7,48 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
-	int a, b, kq;
-	EditText editA, editB, editKQ;
-	Button btnThucHien;
-	RadioButton radCong, radTru, radnhan, radChia;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		radCong = (RadioButton) findViewById(R.id.radCong);
-		radTru = (RadioButton) findViewById(R.id.radTru);
-		radnhan = (RadioButton) findViewById(R.id.radnhan);
-		radChia = (RadioButton) findViewById(R.id.radChia);
-		
-		btnThucHien = (Button) findViewById(R.id.btnThucHien);
-		
-		btnThucHien.setOnClickListener(new OnClickListener() {
+		Button btnVote = (Button) findViewById(R.id.btnVote);
+		btnVote.setOnClickListener(new OnClickListener() {
 			
 			@Override
-			public void onClick(View arg0) {
+			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				RadioGroup group =(RadioGroup) findViewById(R.id.radioGroup1);
+				int idChecked=group.getCheckedRadioButtonId();
+				switch(idChecked)
+				{
+				case R.id.radRatThich:
+					break;
+				case R.id.radHoiThich:
+					break;
+				case R.id.radlunglay:
+					break;
+				case R.id.radGhet:
+					break;
+				case R.id.radBaoCongAn:
+					break;
+				}
+				RadioButton rad = (RadioButton) findViewById(idChecked);
 				
-				editA = (EditText) findViewById(R.id.editA);
-				a = Integer.parseInt(editA.getText()+"");
-				editB = (EditText) findViewById(R.id.editB);
-				b = Integer.parseInt(editB.getText()+"");
-				editKQ = (EditText) findViewById(R.id.editKQ);
+				String YeuThich =(String) rad.getText();
+				
+			TextView txtXuat = (TextView) findViewById(R.id.txtXuat);
+			txtXuat.setText(YeuThich);;
+		}; 
 			
-				
-				if(radCong.isChecked()==true)
-					editKQ.setText(""+(a+b));
-				if(radTru.isChecked()==true)
-					editKQ.setText(""+(a-b));
-				if(radnhan.isChecked()==true)
-					editKQ.setText(""+(a*b));
-				if(radChia.isChecked()==true)
-					editKQ.setText(""+(float)((a*1.0/b)));
-									
-				
-			}
+			
 		});
+		
 		
 	}
 
